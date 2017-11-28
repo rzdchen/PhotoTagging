@@ -2,6 +2,8 @@ package com.cat.cc.tag;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.cat.cc.taglibrary.view.ImageDotLayout;
 
@@ -27,6 +29,13 @@ public class ImageDotActivity extends AppCompatActivity {
         //设置背景图片
         imageDotLayout.setImage("http://pic39.nipic.com/20140311/8821914_214422866000_2.jpg");
         initIcon();
+        imageDotLayout.setOnIconClickListener(new ImageDotLayout.OnIconClickListener() {
+            @Override
+            public void onIconClick(View v) {
+                ImageDotLayout.IconBean bean= (ImageDotLayout.IconBean) v.getTag();
+                Toast.makeText(ImageDotActivity.this,"位置="+bean.id,Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initIcon() {
